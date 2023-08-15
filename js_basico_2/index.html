@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="meuAmor"><button id="botaoCarregar">Carregando cervejas...</button></div>
+
+    <script>
+        let cervejas = ["Guiness", "Desperados", "Becks"];
+
+        function transformar(item) {
+            return `<tr><td>${item}</td></tr>`;
+        }
+
+        function carregarDiv() {
+            let div = document.getElementById("meuAmor");
+
+            cervejas.sort(() => Math.random() - 0.5); // Embaralha o array de cervejas
+
+            let cervejasHtml = cervejas.map(transformar);
+
+            div.innerHTML = `<table><tr><th>Cervejas</th></tr><tr><td>${cervejasHtml.join("\n")}</td></tr></table>`;
+        }
+
+        let botao = document.getElementById("botaoCarregar");
+        botao.addEventListener("click", carregarDiv);
+    </script>
+</body>
+
+</html>
