@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div><a href="javascript:void(0);" id="linkCarregar">Carregando cervejas...</a></div>
+    <div id="meu amor"></div>
+</body>
+<script>
+    let cervejas = ["Guiness", "Desperados", "Becks"]
+
+    const carregarDiv = (cervs) => {
+        const div = document.getElementById("meu amor")
+        cervs.sort(() => Math.random() - 0.5);
+        const cervejasHtml = cervs.map(item => `<div>${item}</div>`)
+        div.innerHTML = `<table><tr><th>Cervejas</th></tr><tr><td>${cervejasHtml.join("\n")}</td></tr></table>`;
+    }
+
+    let link = document.getElementById("linkCarregar")
+    link.addEventListener("click", () => carregarDiv(cervejas))
+</script>
+</html>
+
+
