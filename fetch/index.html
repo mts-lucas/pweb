@@ -5,6 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -30,15 +31,33 @@
 
     //cs é um array de cervejas
 
-    const carregarDiv = cs => {
+    const carregarDiv = (
+        cs,
+        divId = "cervejasDiv",
+        headers = ["Nome", "Álcool", "Estilo", "Amargor"],
+        propertyNames = ["name", "alcohol", "style", "ibu"]
+    ) => {
+        const div = document.getElementById(divId);
 
-        const div = document.getElementById("cervejasDiv")
+        const headerRow = `<tr>${headers
+            .map((header) => `<th>${header}</th>`)
+            .join("")}</tr>`;
 
-        const itensHtml = cs.map(({ name, alcohol }) => `<div>${name} -- ${alcohol}</div>`)
+        const itemsHtml = cs.map((item) => {
+            const cells = propertyNames.map((propertyName) => {
+                const value = item[propertyName] || "";
+                return `<td>${value}</td>`;
+            });
+            return `<tr>${cells.join("")}</tr>`;
+        });
 
-        div.innerHTML = `${itensHtml.join("\n")}`
+        div.innerHTML = `<table>${headerRow}${itemsHtml.join("\n")}</table>`;
+        div.style.display = "block";
 
-    }
+        // Change the button text to "Remover cervejas"
+        const botao = document.getElementById("botaoCarregar");
+        botao.textContent = "Remover cervejas";
+    };
 
 
 
