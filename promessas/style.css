@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px;
+}
+
+th {
+    background-color: #dbe4f1;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+#cervejasDiv{
+    margin-top: 50px;
+    width: 80%;
+    max-width: 800px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 18px;
+    background-color: rgb(76, 204, 76);
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(28, 122, 28);
+}
