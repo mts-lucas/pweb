@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReactZero</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+    <script type="text/babel">
+
+        function DrinksTable({ drinks }) {
+            return (
+                <table class="mytable" border="1">
+                    <thead>
+                        <tr><th>Nome</th><th>Marca</th></tr>
+                    </thead>
+                    <tbody>
+                        {drinks.map((drink, index) => (
+                            <tr key={index}>
+                                <td>{drink.nome}</td>
+                                <td>{drink.marca}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            );
+        }
+
+        function MyHeader() {
+            return <h1>Minha tabela de bebidas</h1>;
+        }
+
+        const mydrinks = [
+            { nome: "Catuaba", marca: "Catuaba" },
+            { nome: "51", marca: "Companhia Müller de Bebidas" },
+            { nome: "Slova", marca: " Boituva" }
+        ];
+
+        function ArrayTable() {
+            const [showTable, setShowTable] = React.useState(true);
+
+            const toggleTable = () => {
+                setShowTable(!showTable);
+            };
+
+            return (
+                <div>
+                    {showTable ? (
+                        <div>
+                            <MyHeader />
+                            <DrinksTable drinks={mydrinks} />
+                            <div class="botao">
+                                <button onClick={toggleTable}>Voltar</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <MyHeader />
+                            <div class="botao">
+                                <button onClick={toggleTable}>Mostrar Tabela</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <ArrayTable />,
+            document.getElementById("app")
+        );
+
+    </script>
+</body>
+</html>

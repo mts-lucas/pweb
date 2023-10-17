@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+.table-container{
+    margin-top: 50px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.mytable {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.mytable th,
+.mytable td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px;
+}
+
+.mytable th {
+    background-color: #dbe4f1;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adicione um espaço entre a tabela e o botão */
+}
+
+
+button {
+    padding: 18px;
+    background-color: rgb(76, 204, 76);
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: rgb(28, 122, 28);
+}
