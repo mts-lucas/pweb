@@ -2,109 +2,133 @@
 
 <html>
 
-   <head>
+<head>
 
-      <title>ReceitaReact - 2</title>      
+    <title>ReceitaReact - 2</title>
 
-   </head>
+</head>
 
-   <body>
+<body>
 
-      <div id="app">
-
-      
-
-      </div>
+    <div id="app">
 
 
 
-      <script src="libs/react.js"></script>
-
-      <script src="libs/react-dom.js"></script>
-
-      <script src="libs/babel.js"></script>
-
-            
-
-      <script type="text/babel">
-
-      
-
-         class TabelaBebidas extends React.Component{
+    </div>
 
 
 
-            render(){
+    <script src="libs/react.js"></script>
 
-               return (
+    <script src="libs/react-dom.js"></script>
 
-                  <div>
+    <script src="libs/babel.js"></script>
 
-                    <h1>Tabela de Bebidas</h1>
 
-                     <table id="tabela" border="1">
 
-                        <thead>
+    <script type="text/babel">
 
-                           <tr><th>Nome</th><th>Marca</th></tr>
 
-                        </thead>
 
-                        <tbody>
+        class TabelaBebidas extends React.Component {
 
-                           <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
 
-                        </tbody>
 
-                     </table>
+            render() {
 
-                 </div> 
+                return (
 
-               )
+                    <div>
+
+                        <table id="tabela" border="1">
+
+                            <thead>
+
+                                <tr><th>Nome</th><th>Marca</th></tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                )
 
             }
 
 
 
-         }
+        }
 
 
 
-         const TabelaBebidas__ = () => {
+        const TabelaBebidas__ = () => {
 
             return (
 
-               <div>
+                <div>
 
-                  <h1>Tabela de Bebidas</h1>
+                    <h1>Tabela de Bebidas</h1>
 
-                  <table id="tabela" border="1">
+                    <table id="tabela" border="1">
 
-                     <thead>
+                        <thead>
 
-                        <tr><th>Nome</th><th>Marca</th></tr>
+                            <tr><th>Nome</th><th>Marca</th></tr>
 
-                     </thead>
+                        </thead>
 
-                     <tbody>
+                        <tbody>
 
-                        <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                            <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
 
-                     </tbody>
+                        </tbody>
 
-                  </table>
+                    </table>
 
-               </div>
+                </div>
 
-            )  
+            )
 
-         }
+        }
 
-         
 
-         ReactDOM.render(
+        class MyHeader extends React.Component {
 
-            <TabelaBebidas/>
+
+            render() {
+
+                const { mytitle } = this.props;
+
+                return (<h1>{mytitle}</h1>);
+            }
+        }
+
+        class MyPage extends React.Component {
+
+            render(){
+                const { mytitle } = this.props;
+
+                return (
+                <div>
+                    <MyHeader mytitle={mytitle} />
+                    <TabelaBebidas />
+                </div>
+                );
+            }
+        }
+
+        const titulo = "Tabela de Canas"
+
+        ReactDOM.render(
+
+            <MyPage mytitle={titulo} />
 
             ,
 
@@ -112,8 +136,8 @@
 
 
 
-      </script>
+    </script>
 
-   </body>
+</body>
 
 </html>
