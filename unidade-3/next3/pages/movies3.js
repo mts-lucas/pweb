@@ -2,6 +2,8 @@ import useSWR from 'swr'
 
 import {useState} from 'react'
 
+import Link from "next/link";
+
 
 
 export default function Movies3(){
@@ -62,14 +64,16 @@ export function TheMovies({data,show}){
     if (data.Search === '' ) return (<div>carregando...</div>)
 
     return (
-
         <div>
-
-            { data.Search.map( (m) => <div>{m.Title} --- {m.Year}</div>  ) }            
-
+          {data.Search.map((m) => (
+            <div key={m.imdbID}>
+              <Link href={`/onemovie/${m.imdbID}`}>
+                <p>{m.Title}</p>
+              </Link>
+            </div>
+          ))}
         </div>
-
-    )
+      );
 
 }
 
