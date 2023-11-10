@@ -1,6 +1,6 @@
 export async function getServerSideProps(context){
 
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.MYKEY}&s=bagdad`)
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MYKEY}&s=bagdad`)
   
     const data = await res.json()
   
