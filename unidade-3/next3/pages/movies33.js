@@ -60,56 +60,36 @@ export function TheLink({url, handler}){
 
 }
 
-export default function Movies33(){
-
-    const [state, setState] = useState({url:'', titleSearchString:''})
-
-    const {data, error} = useSWR(state.url, async (u) => {
-
-        if (!state.url || !state.titleSearchString) return {Search:''}
-
-        if (state.url === '' || state.titleSearchString ==='') return {Search:''}
-
-        const res = await fetch(`${state.url}/?apiKey=${process.env.NEXT_PUBLIC_MYKEY}=${state.titleSearchString}`)
-
-        const json = await res.json();
-
-        return json;
-
-    })
-
-    const onClickHandler = e => {
-
-        e.preventDefault()
-
-        let s = document.getElementById('titleSearchString').value
-
-        if (state.url === '') {
-
-            setState({url:'http://www.omdbapi.com',titleSearchString:s})
-
-        }
-
-        else setState({url:'',titleSearchString: state.titleSearchString})
-
-    }
-
-
-
+export default function Movies33() {
+    const [state, setState] = useState({ url: '', titleSearchString: '' });
+  
+    const { data, error } = useSWR(state.url, async (u) => {
+      if (!state.url || !state.titleSearchString) return { Search: '' };
+  
+      const res = await fetch(`${state.url}/?apiKey=${process.env.NEXT_PUBLIC_MYKEY}=${state.titleSearchString}`);
+      const json = await res.json();
+  
+      return json;
+    });
+  
+    const onClickHandler = (e) => {
+      e.preventDefault();
+  
+      let s = document.getElementById('titleSearchString').value;
+  
+      if (state.url === '') {
+        setState({ url: 'http://www.omdbapi.com', titleSearchString: s });
+      } else {
+        setState({ url: '', titleSearchString: s });
+      }
+    };
+  
     return (
-
-        <div>
-
-            <TheForm/>
-
-            <TheLink url={state.url} handler={onClickHandler} />
-
-            <TheMovies data={data ? data: {Search:''} } show={state.url !== ''} />
-
-        
-
-        </div>
-
-    )
-
-}
+      <div>
+        <TheForm />
+        <TheLink url={state.url} handler={onClickHandler} />
+        <TheMovies data={data ? data : { Search: '' }} show={state.url !== ''} />
+        {state.url !== '' && data && data.Search.length === 0 && <p>Nenhum resultado encontrado.</p>}
+      </div>
+    );
+  }
